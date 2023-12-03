@@ -29,8 +29,9 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<Tab>", ":bnext<CR>", opts)
+keymap("n", "<S-tab>", ":bprevious<CR>", opts)
+keymap("n", "<leader>q", ":bd<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
@@ -78,6 +79,36 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- increment and decrement
+keymap('n', '+', '<C-a>')
+keymap('n', '-', '<C-x>')
+
+-- select all
+keymap('n', '<M-a>', 'gg<S-v>G')
+
+-- do not yank with x
+keymap('n', 'x', '"_x')
+
+-- dedent
+keymap('i', '<S-Tab>', '<C-d>')
+
+-- increase/decrease split size with leader
+keymap('n', 's=', ':vertical resize +4<cr>')
+keymap('n', 's-', ':vertical resize -4<cr>')
+keymap('n', 's]', ':resize +4<cr>')
+keymap('n', 's[', ':resize -4<cr>')
+
+-- split window
+keymap('n', 'ss', ':split<Return><C-w>w')
+keymap('n', 'sv', ':vsplit<Return><C-w>w')
+
+-- split navigation
+keymap('', 'sh', '<C-w>h')
+keymap('', 'sl', '<C-w>l')
+keymap('', 'sk', '<C-w>k')
+keymap('', 'sj', '<C-w>j')
+
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
